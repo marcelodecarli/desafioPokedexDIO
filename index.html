@@ -31,14 +31,17 @@
         </ol>
 
 
-        <div class="modal" style="display: none;">
+        <div id="pokemonModal" class="modal" style="display: none;">
             <div class="modal-content">
-                <h1 class="modal-name"></h1>
-                <img class="modal-image" src="" alt="">
-                <p class="modal-types"></p>
-                <button class="modal-close">Close</button>
+                
+                <img id="pokemonImage" alt="Imagem do Pokémon">
+                <h2 id="pokemonName"></h2>
+                <p id="pokemonType"></p>
+
+                <button class="close"> Close</button>
             </div>
         </div>
+        
         
         <div class="pagination">
             <button id="loadMoreButton" type="button">

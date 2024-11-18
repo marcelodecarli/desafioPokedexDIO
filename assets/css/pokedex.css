@@ -84,7 +84,7 @@
     margin: .5rem;
     padding: 1rem;
     border-radius: 1rem;
-    box-shadow: 5px 5px 10px;
+    box-shadow: 3px 3px 10px gray;
 }
 
 .pokemon .number {

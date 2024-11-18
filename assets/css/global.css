@@ -23,6 +23,12 @@ body {
     }
 }
 
+
+#pokemonName {
+    margin: 0;
+    padding: 0;
+}
+
 .modal {
     position: fixed;
     top: 0;
@@ -33,32 +39,45 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
 
 .modal-content {
+    display: flex;
+    flex-direction: column;
     background: #fff;
     padding: 20px;
+    height: 330px;
+    width: 280px;
     border-radius: 10px;
     text-align: center;
+    position: relative;
+    border: solid 3px black;
+    align-items: center;
+    justify-content: center;
+
 }
 
-.modal-image {
+#pokemonImage {
     width: 150px;
-    height: auto;
+    height: 150px;
+    margin-bottom: 10px;
+
+    filter: drop-shadow(30px 10px .725rem #00000083);
 }
 
-.modal-close {
-    margin-top: 10px;
-    padding: 5px 10px;
-    background: #ff4444;
-    color: white;
-    border: none;
-    border-radius: 5px;
+.close {
+    position: absolute;
+    top: 275px;
+    right: 110px;
+    font-size: .875rem;
     cursor: pointer;
+    color: #ff4444;
+    padding: .525rem;
+    border-radius: 50%;
 }
 
-
-.modal-name{
-    text-transform: capitalize;
+.close:hover {
+    background-color: #ff4444;
+    color: #FFF
 }

@@ -6,7 +6,27 @@ const limit = 10
 let offset = 0;
 
 
-function convertPokemonToLi(pokemon) {
+async function fetchPokemonDetails(pokemonId) {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
+    const data = await response.json();
+  
+    const name = data.name;
+    const types = data.types.map(typeInfo => typeInfo.type.name).join(', ');
+    const image = data.sprites.front_default;
+
+  
+    // Atualize os elementos da modal com os dados do Pokémon
+    document.getElementById('pokemonName').textContent = `Nome: ${name}`;
+    document.getElementById('pokemonType').textContent = `Tipo(s): ${types}`;
+    document.getElementById('pokemonImage').src = image;
+
+  
+    // Mostre a modal
+    document.getElementById('pokemonModal').style.display = 'block';
+  }
+  
+
+  function convertPokemonToLi(pokemon) {
     return `
         <li class="pokemon ${pokemon.type}">
             <span class="number">#${pokemon.number}</span>
@@ -20,7 +40,6 @@ function convertPokemonToLi(pokemon) {
                     src="${pokemon.photo}" 
                     alt="${pokemon.name}" 
                     class="pokemon-img"
-                    data-number="${pokemon.number}" 
                     data-name="${pokemon.name}" 
                     data-photo="${pokemon.photo}" 
                     data-types="${pokemon.types.join(', ')}"
@@ -29,7 +48,6 @@ function convertPokemonToLi(pokemon) {
         </li>
     `;
 }
-
 
 
 

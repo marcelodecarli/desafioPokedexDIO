@@ -1,11 +1,8 @@
-// Seleciona o modal e seus elementos internos
-const modal = document.querySelector('.modal');
-const modalTitle = document.querySelector('.modal-name');
-const modalImage = document.querySelector('.modal-image');
-const modalTypes = document.querySelector('.modal-types');
-const modalCloseButton = document.querySelector('.modal-close');
+// Seleciona os elementos do modal
+const modal = document.getElementById('pokemonModal');
+const closeButton = document.querySelector('.close');
 
-// Abre o modal com as informações do Pokémon
+// Preenche o modal com as informações do Pokémon
 function openModal(event) {
     const pokemonImage = event.target;
 
@@ -16,28 +13,28 @@ function openModal(event) {
         const types = pokemonImage.dataset.types;
 
         // Atualiza o conteúdo do modal
-        modalTitle.textContent = name;
-        modalImage.src = photo;
-        modalImage.alt = name;
-        modalTypes.textContent = `Tipos: ${types}`;
+        document.getElementById('pokemonName').textContent = name;
+        document.getElementById('pokemonImage').src = photo;
+        document.getElementById('pokemonImage').alt = name;
+        document.getElementById('pokemonType').textContent = `Tipos: ${types}`;
+
 
         // Exibe o modal
         modal.style.display = 'flex';
     }
 }
 
-// Fecha o modal
-function closeModal() {
+// Fecha o modal quando o botão de fechamento é clicado
+closeButton.addEventListener('click', function() {
     modal.style.display = 'none';
-}
+});
 
-// Eventos para abrir e fechar o modal
-document.addEventListener('click', openModal);
-modalCloseButton.addEventListener('click', closeModal);
-
-// Fecha o modal ao clicar fora da área de conteúdo
-modal.addEventListener('click', (event) => {
+// Fecha o modal se o usuário clicar fora da área do modal
+window.addEventListener('click', function(event) {
     if (event.target === modal) {
-        closeModal();
+        modal.style.display = 'none';
     }
 });
+
+// Adiciona o evento de clique na imagem do Pokémon
+document.addEventListener('click', openModal);
